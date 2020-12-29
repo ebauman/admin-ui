@@ -1,0 +1,15 @@
+<clr-modal #editsessions [(clrModalOpen)]="modalOpen">
+    <h3 class="modal-title">Edit Sessions</h3>
+    <div class="modal-body">
+        <clr-datagrid>
+            <clr-dg-column [clrDgItem]="'start_date'">Start Date</clr-dg-column>
+            <clr-dg-column [clrDgItem]="'finished'">Status</clr-dg-column>
+
+            <clr-dg-row *clrDgItems="let s of sessions">
+                <clr-dg-cell>
+                    
+                </clr-dg-cell>
+            </clr-dg-row>
+        </clr-datagrid>
+    </div>
+</clr-modal>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerResponse } from '../data/serverresponse';
+import { Session } from '../data/session';
+import { SessionService } from '../data/session.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public activeSessions: number = 0;
 
-  constructor() { }
+  constructor(
+    public sessionService: SessionService
+  ) { }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  public refresh() {
+    this.sessionService.activecount()
+    .subscribe(
+      (s: ServerResponse) => this.activeSessions = +s.message
+    )
   }
 
 }

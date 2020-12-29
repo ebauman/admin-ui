@@ -3,10 +3,20 @@
     <div class="content-container">
         <div class="content-area">
             <div class="clr-row">
-                <div class="clr-col">
-                    <p>
-                        Some day this will have a great dashboard!
-                    </p>
+                <div class="clr-col-2">
+                    <count-card shape="connect" [count]="activeSessions" text="Active Sessions"></count-card>
+                </div>
+                <div class="clr-col-2">
+                    <count-card shape="clock" count="2" text="Ongoing Events"></count-card>
+                </div>
+                <div class="clr-col-2">
+                    <count-card shape="users" count="1432" text="Total Users"></count-card>
+                </div>
+                <div class="clr-col-2">
+                    <count-card shape="file" count="45" text="Scenarios"></count-card>
+                </div>
+                <div class="clr-col-2">
+                    <count-card shape="folder-open" count="16" text="Courses"></count-card>
                 </div>
             </div>
         </div>

@@ -35,6 +35,8 @@ import { VmsetComponent } from './vmset/vmset.component';
 import { NewVmComponent } from './vmset/new-vm/new-vm.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { EventStatusFilterComponent } from './event/event-status-filter/event-status-filter.component';
+import { CountCardComponent } from './components/count-card/count-card.component';
+import { EditSessionsComponent } from './user/edit-sessions/edit-sessions.component';
 
 export function jwtOptionsFactory() {
   return {
@@ -73,7 +75,9 @@ export function jwtOptionsFactory() {
     VmsetComponent,
     NewVmComponent,
     DeleteConfirmationComponent,
-    EventStatusFilterComponent
+    EventStatusFilterComponent,
+    CountCardComponent,
+    EditSessionsComponent
   ],
   imports: [
     BrowserModule,
