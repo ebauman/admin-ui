@@ -37,6 +37,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 import { EventStatusFilterComponent } from './event/event-status-filter/event-status-filter.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { EditAccessCodesComponent } from './user/edit-access-codes/edit-access-codes.component';
+import { SessionComponent } from './user/session/session.component';
 
 export function jwtOptionsFactory() {
   return {
@@ -77,7 +78,8 @@ export function jwtOptionsFactory() {
     DeleteConfirmationComponent,
     EventStatusFilterComponent,
     EditUserComponent,
-    EditAccessCodesComponent
+    EditAccessCodesComponent,
+    SessionComponent
   ],
   imports: [
     BrowserModule,

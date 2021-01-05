@@ -1,0 +1,94 @@
+<clr-alert [clrAlertType]="alertType" [(clrAlertClosed)]="alertClosed" [clrAlertClosable]="false">
+    <clr-alert-item>
+        <span class="alert-text">
+            {{ alertText }}
+        </span>
+    </clr-alert-item>
+</clr-alert>
+<div class="clr-row">
+    <div class="clr-col">
+        <ng-container *ngIf="session.active && !session.finished && !session.paused">
+            <h4>Status: Active</h4>
+        </ng-container>
+        <ng-container *ngIf="session.active && session.paused && !session.finished">
+            <h4>Status: Paused</h4>
+        </ng-container>
+        <ng-container *ngIf="session.finished">
+            <h4>Status: Finished</h4>
+            <i>Finished sessions are cleaned up every three hours.</i>
+        </ng-container>
+    </div>
+</div>
+<div class="clr-row">
+    <div class="clr-col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Detail</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Start Time</td>
+                    <td>{{ session.start_time | date:'long' }}</td>
+                </tr>
+                <tr>
+                    <td>End Time</td>
+                    <td>{{ session.end_time | date:'long' }}</td>
+                </tr>
+                <tr>
+                    <td>Access Code</td>
+                    <td>{{ session.access_code }}</td>
+                </tr>
+                <tr>
+                    <td>Scenario</td>
+                    <td>{{ session.scenario }}</td>
+                </tr>
+                <tr>
+                    <td>Course</td>
+                    <td>{{ session.course }}</td>
+                </tr>
+                <tr *ngIf="session.paused_time">
+                    <td>Paused</td>
+                    <td>{{ session?.paused_time | date:'long' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="clr-row">
+    <div class="clr-col">
+        <table class="table table-compact">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Rancher01</td>
+                    <td>
+                        <button aria-label="open terminal" class="btn btn-sm btn-link btn-link-stack">Open Terminal</button>
+                        <button aria-label="reprovision vm" disabled class="btn btn-sm btn-link btn-link-stack">Reprovision VM</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cluster01</td>
+                    <td>
+                        <button class="btn btn-sm btn-link btn-link-stack">Open Terminal</button>
+                        <button disabled class="btn btn-sm btn-link btn-link-stack">Reprovision VM</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="clr-row">
+    <div class="clr-col">
+        <button [disabled]="session.finished" class="btn btn-outline-danger" (click)="finishSession()">Finish Session</button>
+        <button [disabled]="session.finished || (!session.finished && session.paused)" (click)="pauseSession()" class="btn">Pause Session</button>
+        <button [disabled]="session.finished || (!session.finished && !session.paused)" (click)="resumeSession()" class="btn btn-success">Resume Session</button>
+    </div>
+</div>

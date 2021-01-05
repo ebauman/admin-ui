@@ -5,7 +5,7 @@
             <h3>User Management</h3>
             <div class="clr-row">
                 <div class="clr-col-4">
-                    <clr-datagrid [(clrDgSingleSelected)]="selectedUser">
+                    <clr-datagrid [clrDgSingleSelected]="selectedUser" (clrDgSingleSelectedChange)="userSelection($event)">
                         <clr-dg-column>
                             Email
                             <clr-dg-string-filter [clrDgStringFilter]="emailFilter"></clr-dg-string-filter>
@@ -43,6 +43,25 @@
                                     </clr-tab-content>
                                 </ng-template>
                             </clr-tab>
+                            <ng-container *ngFor="let s of sessions">
+                                <clr-tab>
+                                    <button clrTabLink [id]="s.id">
+                                        <ng-container *ngIf="s.active && !s.finished && !s.paused">
+                                            <clr-icon shape="play" class="is-solid is-success"></clr-icon>
+                                        </ng-container>
+                                        <ng-container *ngIf="s.active && s.paused && !s.finished">
+                                            <clr-icon shape="pause" class="is-solid is-highlight"></clr-icon>
+                                        </ng-container>
+                                        <ng-container *ngIf="s.finished">
+                                            <clr-icon shape="stop" class="is-solid is-danger"></clr-icon>
+                                        </ng-container>
+                                        {{ s.id }}
+                                    </button>
+                                    <clr-tab-content *clrIfActive>
+                                        <session [session]="s"></session>
+                                    </clr-tab-content>
+                                </clr-tab>
+                            </ng-container>
                         </clr-tabs>
                     </ng-container>
                 </div>
