@@ -38,6 +38,8 @@ import { EventStatusFilterComponent } from './event/event-status-filter/event-st
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { EditAccessCodesComponent } from './user/edit-access-codes/edit-access-codes.component';
 import { SessionComponent } from './user/session/session.component';
+import { TerminalComponent } from './terminal/terminal/terminal.component';
+import { TerminalModalComponent } from './terminal/modal/modal.component';
 
 export function jwtOptionsFactory() {
   return {
@@ -79,7 +81,9 @@ export function jwtOptionsFactory() {
     EventStatusFilterComponent,
     EditUserComponent,
     EditAccessCodesComponent,
-    SessionComponent
+    SessionComponent,
+    TerminalComponent,
+    TerminalModalComponent
   ],
   imports: [
     BrowserModule,

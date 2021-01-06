@@ -67,7 +67,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <ng-container *ngFor="let c of claims | keyvalue">
+                    <tr *ngFor="let v of c.value.vm | keyvalue">
+                        <td>{{ v.key }}</td>
+                        <td>
+                            <button aria-label="open terminal" class="btn btn-sm btn-link btn-link-stack" (click)="openTerminal(v.value.vm_id)">Open
+                                Terminal</button>
+                            <button aria-label="reprovision vm" disabled
+                                class="btn btn-sm btn-link btn-link-stack">Reprovision VM</button>
+                        </td>
+                        <terminal-modal #term [vmid]="v.value.vm_id" [vmname]="v.key" [endpoint]="getEndpoint(v.value.vm_id)"></terminal-modal>
+                    </tr>
+                </ng-container>
+                <!-- <tr>
                     <td>Rancher01</td>
                     <td>
                         <button aria-label="open terminal" class="btn btn-sm btn-link btn-link-stack">Open Terminal</button>
@@ -80,15 +92,18 @@
                         <button class="btn btn-sm btn-link btn-link-stack">Open Terminal</button>
                         <button disabled class="btn btn-sm btn-link btn-link-stack">Reprovision VM</button>
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>
 </div>
 <div class="clr-row">
     <div class="clr-col">
-        <button [disabled]="session.finished" class="btn btn-outline-danger" (click)="finishSession()">Finish Session</button>
-        <button [disabled]="session.finished || (!session.finished && session.paused)" (click)="pauseSession()" class="btn">Pause Session</button>
-        <button [disabled]="session.finished || (!session.finished && !session.paused)" (click)="resumeSession()" class="btn btn-success">Resume Session</button>
+        <button [disabled]="session.finished" class="btn btn-outline-danger" (click)="finishSession()">Finish
+            Session</button>
+        <button [disabled]="session.finished || (!session.finished && session.paused)" (click)="pauseSession()"
+            class="btn">Pause Session</button>
+        <button [disabled]="session.finished || (!session.finished && !session.paused)" (click)="resumeSession()"
+            class="btn btn-success">Resume Session</button>
     </div>
 </div>
