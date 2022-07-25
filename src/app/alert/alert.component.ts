@@ -1,16 +1,22 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClrAlert } from '@clr/angular';
 import { ClrAlertType } from '../clr-alert-type';
 
 @Component({
   selector: 'alert',
   templateUrl: './alert.component.html',
+  styleUrls: ['./alert.component.scss']
 })
-export class AlertComponent {
+export class AlertComponent implements OnInit {
   public isClosed: boolean = true;
   public text: string = "";
 
   @ViewChild("clrAlert") alert: ClrAlert;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
   public close() {
     this._close();

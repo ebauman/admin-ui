@@ -1,5 +1,6 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ClrModal } from '@clr/angular';
 import { ServerResponse } from 'src/app/data/serverresponse';
 import { User } from 'src/app/data/user';
 import { UserService } from 'src/app/data/user.service';
@@ -7,8 +8,9 @@ import { UserService } from 'src/app/data/user.service';
 @Component({
   selector: 'edit-access-codes',
   templateUrl: './edit-access-codes.component.html',
+  styleUrls: ['./edit-access-codes.component.scss']
 })
-export class EditAccessCodesComponent implements OnChanges {
+export class EditAccessCodesComponent implements OnInit, OnChanges {
   @Input()
   public user: User = new User();
 
@@ -29,6 +31,9 @@ export class EditAccessCodesComponent implements OnChanges {
       Validators.minLength(4)
     ])
   })
+
+  ngOnInit(): void {
+  }
 
   ngOnChanges(): void {
     this.reset();

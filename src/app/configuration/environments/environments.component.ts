@@ -6,6 +6,7 @@ import { EditEnvironmentComponent } from './edit-environment/edit-environment.co
 @Component({
   selector: 'app-environments',
   templateUrl: './environments.component.html',
+  styleUrls: ['./environments.component.scss']
 })
 export class EnvironmentsComponent implements OnInit {
   public environments: Environment[] = [];

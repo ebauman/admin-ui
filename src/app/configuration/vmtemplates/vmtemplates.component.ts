@@ -11,6 +11,7 @@ import { EditVmtemplateComponent } from './edit-vmtemplate/edit-vmtemplate.compo
 @Component({
   selector: 'app-vmtemplates',
   templateUrl: './vmtemplates.component.html',
+  styleUrls: ['./vmtemplates.component.scss']
 })
 export class VmtemplatesComponent implements OnInit {
   public templates: VMTemplate[] = [];
