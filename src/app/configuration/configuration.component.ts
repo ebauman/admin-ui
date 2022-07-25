@@ -1,18 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { RbacService } from '../data/rbac.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-configuration',
   templateUrl: './configuration.component.html',
 })
-export class ConfigurationComponent implements OnInit {
-
-  public rolesRbac: boolean = false;
-
-  constructor(
-  ) { }
-
-  ngOnInit() {
-  }
-
-}
+export class ConfigurationComponent {}

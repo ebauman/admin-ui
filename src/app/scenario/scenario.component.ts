@@ -10,7 +10,6 @@ import { VMTemplate } from '../data/vmtemplate';
 import { VirtualMachine } from '../data/virtualmachine';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { KeepaliveValidator } from '../validators/keepalive.validator';
-import { RbacService } from '../data/rbac.service';
 
 @Component({
   selector: 'app-scenario',
@@ -55,12 +54,9 @@ export class ScenarioComponent implements OnInit {
   
   public vmProps: string[] = Object.keys(new VirtualMachine());
 
-  public selectRbac: boolean = false;
-
   constructor(
     public scenarioService: ScenarioService,
-    public vmTemplateService: VmtemplateService,
-    public rbacService: RbacService
+    public vmTemplateService: VmtemplateService
   ) { }
 
   public vmform: FormGroup = new FormGroup({
@@ -388,12 +384,6 @@ export class ScenarioComponent implements OnInit {
   }
 
   ngOnInit() {
-    ["update", "get"].forEach((verb: string) => {
-      if (this.rbacService.Grants('scenarios', verb)) {
-        this.selectRbac = true;
-      }
-    })
-
     this.scenarioService.list()
       .subscribe(
         (s: Scenario[]) => this.scenarios = s
